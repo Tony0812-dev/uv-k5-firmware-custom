@@ -1,12 +1,12 @@
-on: #指定触发 workflow 的事件
-  push: #当代码推送时触发
+on: #指锟斤拷锟斤拷锟斤拷 workflow 锟斤拷锟铰硷拷
+  workflow_dispatch: #锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷时锟斤拷锟斤拷
 
-jobs: #定义工作流程
-  build: #工作流名称为 build
-    runs-on: ubuntu-22.04 #使用 Ubuntu 22.04 环境执行
-    container: #定义容器
-      image: archlinux:latest #使用 Arch Linux 镜像
-    steps: #定义工作流程中的步骤
+jobs: #锟斤拷锟藉工锟斤拷锟斤拷锟斤拷
+  build: #锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷为 build
+    runs-on: ubuntu-22.04 #使锟斤拷 Ubuntu 22.04 锟斤拷锟斤拷执锟斤拷
+    container: #锟斤拷锟斤拷锟斤拷锟斤拷
+      image: archlinux:latest #使锟斤拷 Arch Linux 锟斤拷锟斤拷
+    steps: #锟斤拷锟藉工锟斤拷锟斤拷锟斤拷锟叫的诧拷锟斤拷
       - name: Install dependencies
         run: |
           pacman -Syyu --noconfirm \
@@ -17,22 +17,22 @@ jobs: #定义工作流程
             python-pip \
             python-crcmod \
 
-      - name: Checkout #拉取代码
-        uses: actions/checkout@v3 #使用 GitHub Actions 提供的 checkout 动作
+      - name: Checkout #锟斤拷取锟斤拷锟斤拷
+        uses: actions/checkout@v3 #使锟斤拷 GitHub Actions 锟结供锟斤拷 checkout 锟斤拷锟斤拷
 
-      - name: safe.directory #设置 git 的 safe.directory 配置
+      - name: safe.directory #锟斤拷锟斤拷 git 锟斤拷 safe.directory 锟斤拷锟斤拷
         run: git config --global --add safe.directory /__w/uv-k5-firmware-custom/uv-k5-firmware-custom
 
-      - name: Make #执行 make 命令
-        run: make full  #编译项目
+      - name: Make #执锟斤拷 make 锟斤拷锟斤拷
+        run: make full  #锟斤拷锟斤拷锟斤拷目
 
-      - name: size #计算 firmware 大小
-        run: arm-none-eabi-size firmware #使用 arm-none-eabi-size 命令计算固件大小
+      - name: size #锟斤拷锟斤拷 firmware 锟斤拷小
+        run: arm-none-eabi-size firmware #使锟斤拷 arm-none-eabi-size 锟斤拷锟斤拷锟斤拷锟教硷拷锟斤拷小
 
-      - name: Upload Artifact #上传固件文件
-        uses: actions/upload-artifact@v3 #使用 GitHub Actions 提供的 upload-artifact 动作
+      - name: Upload Artifact #锟较达拷锟教硷拷锟侥硷拷
+        uses: actions/upload-artifact@v3 #使锟斤拷 GitHub Actions 锟结供锟斤拷 upload-artifact 锟斤拷锟斤拷
         with:
-          name: firmware #设置 artifact 名称为 firmware
-          path: LOSEHU*.bin #上传文件路径为 LOSEHU*.bin
+          name: firmware #锟斤拷锟斤拷 artifact 锟斤拷锟斤拷为 firmware
+          path: LOSEHU*.bin #锟较达拷锟侥硷拷路锟斤拷为 LOSEHU*.bin
 
 
