@@ -225,7 +225,7 @@ void Main(void) {
         show_uint32(TIMERBASE0_IE,4);
     }
 #endif
-    //UI_DisplayWelcome();
+    UI_DisplayWelcome();
 
 
     boot_counter_10ms = 250;
